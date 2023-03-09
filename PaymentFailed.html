@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+.comment {
+        resize: none;
+      }
+</style>
+
+<script src="https://smtpjs.com/v3/smtp.js"></script>  
+<!-- <script type="text/javascript">
+  var mealsByCategory = {
+    A: ["Soup", "Juice", "Tea", "Others"],
+    B: ["Soup", "Juice", "Water", "Others"],
+    C: ["Soup", "Juice", "Coffee", "Tea", "Others"]
+  }
+
+  function changecat(value) {
+        if (value.length == 0) document.getElementById("category").innerHTML = "<option></option>";
+        else {
+            var catOptions = "";
+            for (categoryId in mealsByCategory[value]) {
+                catOptions += "<option>" + mealsByCategory[value][categoryId] + "</option>";
+            }
+            document.getElementById("category").innerHTML = catOptions;
+        }
+  }
+</script> -->
+</head>
+<body>
+<!-- <div class="row">
+  <div class="col-75">
+    <div class="container">
+  <select name="meal" id="meal" onChange="changecat(this.value);">
+    <option value="" disabled selected>Select</option>
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+</select>
+<select name="category" id="category">
+    <option value="" disabled selected>Select</option>
+</select>
+</div></div></div>
+</div> -->
+<div class="row">
+  <div class="col-100">
+    <div class="container">
+      <img src="abs-logo.png" width="100%"/>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+      
+        <div class="row">
+          <div class="col-50">
+            <h3>Billing Address</h3>
+            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="542 First Street">
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="San Jose">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="CA">
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="94043">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-50">
+            <h3>Payment</h3>
+            <label for="fname">Accepted Cards</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Exp Year</label>
+                <input type="text" id="expyear" name="expyear" placeholder="2026">
+              </div>
+              <div class="col-50">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="352">
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <label>
+          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+        </label>
+        <input value="Continue to checkout" class="btn" onclick="sendEmail()">
+      </form>
+    </div>
+  </div>
+  <div class="col-25">
+    <div class="container">
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
+      <p><a href="#">Aptamil Infant Formula</a> <span class="price">$150</span></p>
+      <p><a href="#">Gerber Food & Veggie</a> <span class="price">$50</span></p>
+      <p><a href="#">Pediasure</a> <span class="price">$80</span></p>
+      <p><a href="#">Grain Bar Box</a> <span class="price">$20</span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>$300</b></span></p>
+    </div>
+    <div id="demo" class="col-25">
+    <script>
+      function sendEmail(){    
+      /*Email.send({
+          SecureToken : "7c302eed-777d-4f9d-8de6-4ab12f7eda62",
+          To : 'payment-processing@pdt-smallik.pagerduty.com',
+          From : "sanjay.mallik@gmail.com",
+          Subject : "Payment Failed",
+          Body : "Test Payment Failed email"
+      }).then(
+        message => alert("Sorry, the Payment did not go through. Please try again!")
+      );*/
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            //alert("Sorry, the Payment did not go through. Please try again!");
+            document.getElementById("demo").innerHTML = '<div class="col-25"><div class="container">'+
+              '<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST" style="background-color:#E6E6FA">' +
+              '<input type=hidden name="orgid" value="00D5f000002dVmW">'+
+              '<input type=hidden name="retURL" value="https://businessmarketingfinance.com/wp-content/uploads/2019/06/ill-get-back-to-you-on-that.jpg">'+
+              '<label for="name">Report an Issue:<strong><font color=Red> Sorry, there was an issue placing your Order.</font></strong> </label>'+
+              '<label for="name">Full Name</label><input  id="name" maxlength="80" name="name" size="20" type="text" value="John More Doe"/><br>'+
+              '<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" value="john@example.com"/><br>'+
+              '<label for="phone">Phone</label><input  id="phone" maxlength="40" name="phone" size="20" type="text" value="1111-2222-3333-4444"/><br>'+
+              '<label for="subject">Subject</label><input  id="subject" maxlength="80" name="subject" size="20" type="text" value="Unknown Error while placing an Order"/><br>'+
+              '<label for="description">Problem Description</label><textarea class="comment" name="description" cols="25" rows="10">CC information is correct and i can not apply my rewards as well.</textarea><br>'+
+              '<input type="submit" name="submit">'+
+              '<img width="20%" height="20%" src="https://sp-ah--c.documentforce.com/servlet/servlet.ImageServer?id=0155Y000005GDim&oid=00D5Y000002TjSi&lastMod=1618115544000"'+
+              '</form></div></div>';              
+          }
+          document.getElementById('demo').scrollIntoView();
+        };
+        xhttp.open("POST", "https://event-sender.herokuapp.com/ondemand/8c0972a1-e6f2-4ddb-a3c9-c4101e38fe60", true);
+        xhttp.send();
+      }
+      </script>
+      </div>
+  </div>
+</div>
+
+</body>
+</html>
