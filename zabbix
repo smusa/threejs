@@ -1,0 +1,26 @@
+{
+  "agent": {
+    "agent_id": "afe900eb-505c-43b9-802e-bbfbeb6948c9",
+    "queued_at": "2023-05-12T05:27:20Z",
+    "queued_by": "pd-nagios"
+  },
+  "client": null,
+  "client_url": null,
+  "dedup_key": "event_source=service;host_name=p4proxy-hyd-01;service_desc=P4P_HOST_CHECK_MOUNT",
+  "description": "CRITICAL: 'P4P_HOST_CHECK_MOUNT' on 'p4proxy-hyd-01'",
+  "details": {
+    "HOSTDISPLAYNAME": "Eng-SCM",
+    "HOSTNAME": "p4proxy-hyd-01",
+    "SERVICEDESC": "P4P_HOST_CHECK_MOUNT",
+    "SERVICEDISPLAYNAME": "Eng-SCM",
+    "SERVICEOUTPUT": "CRIT: Alarm timeout (120)",
+    "SERVICEPROBLEMID": "218",
+    "SERVICESTATE": "CRITICAL",
+    "pd_nagios_object": "service"
+  },
+  "event_action": "trigger",
+  "event_type": "trigger",
+  "incident_key": "event_source=service;host_name=p4proxy-hyd-01;service_desc=P4P_HOST_CHECK_MOUNT",
+  "service_key": "R020VD9TBMZ4876COASWYBRLU106K681",
+  "severity": "critical"
+}
